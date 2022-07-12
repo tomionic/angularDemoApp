@@ -2,6 +2,34 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { IonicAuthOptions } from "@ionic-enterprise/auth";
+
+export const auth0Config: IonicAuthOptions = {
+  authConfig: 'auth0',
+  clientID: 'sCYfHfnZJx9qE1QqJ0yP4f7Dp0DJfV5y',
+  discoveryUrl: 'https://dev-vnzxiqpe.us.auth0.com/.well-known/openid-configuration',
+  logoutUrl: '',
+  scope: 'openid email picture profile',
+  audience: 'https://api.demo-app.com',
+  logLevel: 'DEBUG',
+};
+
+export const mobileAuth0Config: IonicAuthOptions = {
+  ...auth0Config,
+  redirectUri: 'msauth://login',
+  logoutUrl: 'msauth://login',
+  platform: 'capacitor',
+  iosWebView: 'private',
+};
+
+export const webAuth0Config: IonicAuthOptions = {
+  ...auth0Config,
+  redirectUri:'http://localhost:8100/tabs/tab1',
+  logoutUrl: 'http://localhost:8100/tabs/tab1',
+  platform: 'web',
+};
+
+
 export const environment = {
   production: false
 };
